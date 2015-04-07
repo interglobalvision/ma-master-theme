@@ -2,13 +2,13 @@
 // Menu icons for Custom Post Types
 function add_menu_icons_styles(){
 ?>
- 
+
 <style>
 #adminmenu .menu-icon-project div.wp-menu-image:before {
     content: '\f498';
 }
 </style>
- 
+
 <?php
 }
 add_action( 'admin_head', 'add_menu_icons_styles' );
@@ -19,7 +19,7 @@ add_action( 'init', 'register_cpt_project' );
 
 function register_cpt_project() {
 
-    $labels = array( 
+    $labels = array(
         'name' => _x( 'Projects', 'project' ),
         'singular_name' => _x( 'Project', 'project' ),
         'add_new' => _x( 'Add New', 'project' ),
@@ -34,17 +34,18 @@ function register_cpt_project() {
         'menu_name' => _x( 'Projects', 'project' ),
     );
 
-    $args = array( 
+    $args = array(
         'labels' => $labels,
         'hierarchical' => false,
-        
+
         'supports' => array( 'title', 'editor', 'thumbnail' ),
-        
+        'taxonomies' => array( 'post_tag' ),
+
         'public' => true,
         'show_ui' => true,
         'show_in_menu' => true,
         'menu_position' => 5,
-        
+
         'show_in_nav_menus' => true,
         'publicly_queryable' => true,
         'exclude_from_search' => false,
