@@ -9,4 +9,11 @@ function l(data) {
 jQuery(document).ready(function () {
   'use strict';
   console.log('Hola Globie');
+
+  $('.js-packery-container').packery({
+  	itemSelector: '.js-packery-item',
+  	columnWidth: '.grid-sizer',
+  	gutter: '.gutter-sizer',
+  	transitionDuration: '0s',
+  });
 });
