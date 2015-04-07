@@ -787,8 +787,62 @@ img {
   display: inline-block;
   margin-left: 0.5em;
 }
+#tags li {
+  display: inline-block;
+  margin-left: 0.5em;
+}
+#search-input {
+  border-bottom: 1px dotted #0e0e0e;
+  outline: none;
+}
 @media screen and (max-width: 1272px) {
-  html {
-    width: 100%;
+  .container {
+    margin: 0 auto;
+    width: 1128px;
+  }
+  .row {
+    clear: both;
+  }
+  .col {
+    float: left;
+    margin-left: 7px;
+    margin-right: 7px;
+    box-sizing: content-box;
+  }
+  .col1 {
+    width: 80px;
+  }
+  .col2 {
+    width: 174px;
+  }
+  .col3 {
+    width: 268px;
+  }
+  .col4 {
+    width: 362px;
+  }
+  .col5 {
+    width: 456px;
+  }
+  .col6 {
+    width: 550px;
+  }
+  .col7 {
+    width: 644px;
+  }
+  .col8 {
+    width: 738px;
+  }
+  .col9 {
+    width: 832px;
+  }
+  .col10 {
+    width: 926px;
+  }
+  .col11 {
+    width: 1020px;
+  }
+  .col12 {
+    width: 1114px;
   }
 }
