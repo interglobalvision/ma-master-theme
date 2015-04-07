@@ -4,10 +4,10 @@ get_header();
 
 <!-- main content -->
 
-<main id="main-content">
+<main id="main-content" class="container">
 
   <!-- main posts loop -->
-  <section id="posts">
+  <section id="posts" class="row">
 
 <?php
 if( have_posts() ) {
@@ -15,7 +15,7 @@ if( have_posts() ) {
     the_post();
 ?>
 
-    <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
+    <article <?php post_class('col col12'); ?> id="post-<?php the_ID(); ?>">
 
       <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
 

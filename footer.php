@@ -1,7 +1,5 @@
-    <footer id="footer">
-    </footer>
-
-  </section>
+  <footer id="footer">
+  </footer>
 
   <?php get_template_part('partials/scripts'); ?>
 
