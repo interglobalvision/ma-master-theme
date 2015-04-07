@@ -733,6 +733,12 @@ ul.u-inline-list li {
 .col12 {
   width: 1256px;
 }
+.grid-sizer {
+  width: 196px;
+}
+.gutter-sizer {
+  width: 16px;
+}
 body {
   font-family: helvetica, arial, sans-serif;
   font-size: 15px;

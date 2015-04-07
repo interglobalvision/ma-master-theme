@@ -18,6 +18,13 @@ $gutter = 16px
 for col in 1..$cols
   .col{col}
     width: ( col * $col ) + ( ( col - 1 ) * $gutter )
+    
+// PACKERY
+$packery-cols = 2
+.grid-sizer
+  width: ( $packery-cols * $col ) + ( ( $packery-cols - 1 ) * $gutter )
+.gutter-sizer
+  width: $gutter
 
 // VARIABLES
 
