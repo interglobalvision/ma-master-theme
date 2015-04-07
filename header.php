@@ -76,3 +76,5 @@ foreach ($tags as $tag) {
 <?php
 }
 ?>
+<div class="grid-sizer"></div>
+<div class="gutter-sizer"></div>
