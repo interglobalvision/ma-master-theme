@@ -50,6 +50,9 @@ h2
 h3
   font-size: 1.5em
 
+h1,h2,h3,h4,h5,h6
+  line-height: $font-leading-basic
+
 p
   margin-bottom: 1em
 
@@ -74,28 +77,16 @@ img
   height: auto
 
 
-//the 100% widths are just so stylus can compile delete as desired
-
 // HEADER
 
 #header
-  width: 100%
+  margin-top: $margin-basic
+  margin-bottom: $margin-basic
 
-// POSTS LOOP
-#posts
-  width: 100%
-
-.post
-  width: 100%
-
-#pagination
-  width: 100%
-
-
-// FOOTER
-
-#footer
-  width: 100%
+#menu
+  li
+    display: inline-block
+    margin-left: 0.5em
 
 
 // MEDIA QUERIES

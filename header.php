@@ -33,9 +33,17 @@
 <body <?php body_class(); ?>>
 <!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p><![endif]-->
 
-  <section id="main-container">
-
-  <!-- start content -->
-  <header id="header">
-    <h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
-  </header>
+<header id="header" class="container">
+  <div class="row">
+    <div class="col col6">
+      <a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
+    </div>
+    <div class="col col6 u-align-right">
+      <ul id="menu">
+        <li><a href="<?php echo home_url('list-of-works/'); ?>">list of works</a></li>
+        <li><a href="<?php echo home_url('projects/'); ?>">index</a></li>
+        <li><a href="<?php echo home_url('search/'); ?>">search</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
