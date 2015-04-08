@@ -81,5 +81,3 @@ if (is_search() || is_tag()) {
 <?php
 }
 ?>
-<div class="grid-sizer"></div>
-<div class="gutter-sizer"></div>
