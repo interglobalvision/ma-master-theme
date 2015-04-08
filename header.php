@@ -48,26 +48,31 @@
   </div>
 </header>
 <?php
-if (is_search()) {
-  $search_term =  $_GET['s'];
+if (is_search() || is_tag()) {
 ?>
 <section id="search" class="container">
   <div class="row">
+<?php
+  if (is_search()) {
+    $search_term =  $_GET['s'];
+?>
     <div class="col col12 u-align-center">
       <form role="search" method="get" id="search-form" action="<?php echo home_url( '/' ); ?>">
         <label id="search-label">Results for: </label>
         <input type="search" id="search-input" placeholder="<?php echo $search_term; ?>" name="s" title="<?php echo esc_attr_x( 'Results for:', 'label' ) ?>" />
       </form>
     </div>
+<?php
+  }
+?>
     <div class="col col12 u-align-center">
       <ul id="tags">
 <?php
-$tags = get_tags();
-foreach ($tags as $tag) {
-  $url = get_tag_link($tag->term_id);
-  echo '<a href="' . $url . '"><li>' . $tag->name . '</li></a>';
-}
-
+  $tags = get_tags();
+  foreach ($tags as $tag) {
+    $url = get_tag_link($tag->term_id);
+    echo '<a href="' . $url . '"><li>' . $tag->name . '</li></a>';
+  }
 ?>
       </ul>
     </div>
