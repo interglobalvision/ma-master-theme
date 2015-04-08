@@ -38,6 +38,11 @@ $font-size-basic = 15px
 $font-leading-basic = 1.35em
 $font-tracking-basic = 0.001em
 
+$font-size-heading = 40px
+$font-size-subheading = 30px
+$font-size-caption = 12px
+
+
 $color-black-soft = rgb(14,14,14)
 $color-white-soft = rgb(253,253,253)
 
@@ -52,13 +57,16 @@ body
   letter-spacing: $font-tracking-basic
 
 h1
-  font-size: 3em
+  font-size: $font-size-heading
 
-h2
-  font-size: 2em
+h2, h3
+  font-size: $font-size-subheading
 
-h3
-  font-size: 1.5em
+h4
+  font-size: $font-size-basic
+
+h5, h6
+  font-size: $font-size-caption
 
 h1,h2,h3,h4,h5,h6
   line-height: $font-leading-basic
@@ -69,7 +77,7 @@ p
 
 // LINKS
 
-a,a:active,a:visited
+a, a:active, a:visited
   color:inherit
   transition:opacity .2s
   &:hover
