@@ -11,7 +11,15 @@ if( have_posts() ) {
 
     <article <?php post_class('viewer'); ?> id="post-<?php the_ID(); ?>">
 
-      <?php echo do_shortcode($gallery) ?>
+      <div class="js-slick-container slider">
+        <?php echo do_shortcode($gallery) ?>
+      </div>
+      <div class="slider-text">
+        <?php the_title(); ?>
+        <span class="caption"></span>
+        <span class="arrow-prev"></span> | <span class="arrow-next"><span>
+        </div>
+      </div>
 
 	    <?php the_content(); ?>
 
