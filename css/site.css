@@ -878,6 +878,16 @@ h6 {
 p {
   margin-bottom: 1em;
 }
+em,
+i,
+.font-italic {
+  font-style: italic;
+}
+strong,
+b,
+.font-bold {
+  font-weight: bold;
+}
 a,
 a:active,
 a:visited {
