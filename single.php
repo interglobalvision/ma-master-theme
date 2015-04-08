@@ -17,7 +17,7 @@ if( have_posts() ) {
       <div class="slider-text">
         <?php the_title(); ?>
         <span class="caption font-italic"></span>
-        <span class="arrow-prev"></span> | <span class="arrow-next"><span>
+        <span class="arrow-prev"></span> | <span class="arrow-next"></span>
       </div>
 
 	    <?php the_content(); ?>
