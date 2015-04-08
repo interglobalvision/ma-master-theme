@@ -10,10 +10,24 @@ jQuery(document).ready(function () {
   'use strict';
   console.log('Hola Globie');
 
-  $('.js-packery-container').packery({
-  	itemSelector: '.js-packery-item',
-  	columnWidth: '.grid-sizer',
-  	gutter: '.gutter-sizer',
-  	transitionDuration: '0s',
-  });
+// PACKERY
+	if ( $('.js-packery-container').length ) {
+	  $('.js-packery-container').packery({
+	  	itemSelector: '.js-packery-item',
+	  	columnWidth: '.grid-sizer',
+	  	gutter: '.gutter-sizer',
+	  	transitionDuration: '0s',
+	  });
+	}
+
+// SLICK
+	function slickInit() {
+		$('.js-slick-container').slick({
+			adaptiveHeight: true,
+		});
+	}
+	if ( $('.js-slick-item').length ) {
+		slickInit();
+	}
+
 });
