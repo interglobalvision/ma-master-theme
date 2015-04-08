@@ -813,11 +813,39 @@ ul.u-inline-list li {
 .col12 {
   width: 1256px;
 }
-.grid-sizer {
-  width: 196px;
+.percent-col {
+  float: left;
+  box-sizing: content-box;
 }
-.gutter-sizer {
-  width: 16px;
+.into-1 {
+  width: 100%;
+}
+.into-2 {
+  width: 50%;
+}
+.into-3 {
+  width: 33.333333333333336%;
+}
+.into-4 {
+  width: 25%;
+}
+.into-5 {
+  width: 20%;
+}
+.into-6 {
+  width: 16.666666666666668%;
+}
+.into-7 {
+  width: 14.285714285714286%;
+}
+.into-8 {
+  width: 12.5%;
+}
+.into-9 {
+  width: 11.11111111111111%;
+}
+.into-10 {
+  width: 10%;
 }
 body {
   font-family: helvetica, arial, sans-serif;
