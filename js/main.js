@@ -24,7 +24,7 @@ jQuery(document).ready(function () {
       timeout = setTimeout(later, wait);
       if (callNow) func.apply(context, args);
     };
-  };
+  }
 
 // PACKERY
   if ( $('.js-packery-container').length ) {
@@ -42,31 +42,45 @@ jQuery(document).ready(function () {
 
 // SLICK
   function resizeImages() { 
-    var $images = $('.js-slick-item img');
-    var windowHeight = $(window).height();
-    var margin = 70;
-    var captionHeight = -1;
+    var margin = 35;
+    var windowHeight = $(window).outerHeight();
+    var captionHeight = $('.slider-text').outerHeight();
 
-    $('.gallery-caption').each(function() {
-      captionHeight = captionHeight > $(this).height() ? captionHeight : $(this).height();
-    });
+    $('.js-slick-item img').css( 'height' , ( windowHeight - captionHeight - margin ) );
 
-    $images.css( 'height' , (windowHeight - margin - captionHeight) + 'px' );
-
-    $('.js-slick-container').css( 'padding-top' , ( margin / 2 ) );
+    $('.js-slick-container').css( 'padding-top' , margin );
   }
 
   var resizeFunction = debounce(function() {
     resizeImages();
   }, 50);
 
+  function replaceCaption(currentSlide) {
+    var caption = $('[data-slick-index="'+currentSlide+'"]').attr('data-caption');
+    if (! caption || caption === undefined || caption === null) {
+      $('.slider-text .caption').html(' ');
+    } else {
+      $('.slider-text .caption').html(caption);
+    }
+  }
+
   function slickInit() {
     $('.js-slick-container').slick({
-      prevArrow: '<a class="slick-prev arrow arrow-prev">&larr;</a>',
-      nextArrow: '<a class="slick-next arrow arrow-next">&rarr;</a>',
+      prevArrow: '<a class="slick-prev" data-arrow="prev">Prev</a>',
+      nextArrow: '<a class="slick-next" data-arrow="next">Next</a>',
+    })
+    .on('afterChange', function(event, slick, currentSlide, nextSlide){
+      replaceCaption(currentSlide);
     })
     .css({
       'opacity': 1
+    });
+
+    $('[data-arrow="prev"]').appendTo('.slider-text span.arrow-prev');
+    $('[data-arrow="next"]').appendTo('.slider-text span.arrow-next');
+
+    $('.js-slick-item').on('click', function() {
+      $('.js-slick-container').slick('slickNext');
     });
   }
 
@@ -74,5 +88,9 @@ jQuery(document).ready(function () {
     resizeImages();
     slickInit();
   }
+
+  $(window).on('resize', function() {
+    resizeImages();
+  });
 
 });
