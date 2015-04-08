@@ -41,7 +41,7 @@ jQuery(document).ready(function () {
   }
 
 // SLICK
-  function resizeImages() {
+  function resizeImages() { 
     var $images = $('.js-slick-item img');
     var windowHeight = $(window).height();
     var margin = 70;
@@ -61,7 +61,10 @@ jQuery(document).ready(function () {
   }, 50);
 
   function slickInit() {
-    $('.js-slick-container').slick()
+    $('.js-slick-container').slick({
+      prevArrow: '<a class="slick-prev arrow arrow-prev">&larr;</a>',
+      nextArrow: '<a class="slick-next arrow arrow-next">&rarr;</a>',
+    })
     .css({
       'opacity': 1
     });
