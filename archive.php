@@ -4,7 +4,7 @@ get_header();
 
 <!-- main content -->
 
-<main id="main-content" class="container">
+<main id="main-content">
 
   <!-- main posts loop -->
   <section id="posts" class="row js-packery-container">
@@ -15,13 +15,10 @@ if( have_posts() ) {
     the_post();
 ?>
 
-    <article <?php post_class('col col4 js-packery-item'); ?> id="post-<?php the_ID(); ?>">
-
-<!--       <a href="<?php the_permalink() ?>"><?php the_title(); ?></a> -->
+    <article <?php post_class('percent-col into-5 js-packery-item'); ?> id="post-<?php the_ID(); ?>">
       <a href="<?php the_permalink() ?>">
         <?php the_post_thumbnail(); ?>
       </a>
-
     </article>
 
 <?php
@@ -31,7 +28,6 @@ if( have_posts() ) {
     <article class="u-alert"><?php _e('Sorry, no posts matched your criteria :{'); ?></article>
 <?php
 } ?>
-
   <!-- end posts -->
   </section>
 
