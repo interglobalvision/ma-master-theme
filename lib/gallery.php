@@ -30,16 +30,27 @@ function my_gallery_shortcode($attr) {
 		'orderby'    => 'menu_order ID',
 		'id'         => $post->ID,
 		'size'       => 'gallery',
+		'include'    => '',
+		'exclude'    => ''
 	), $attr));
-
-	$size = 'gallery-basic';
 
 	$id = intval($id);
 	if ( 'RAND' == $order )
 		$orderby = 'none';
 
-	$attachments = get_children( array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+	if ( !empty($include) ) {
+		$_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
 
+		$attachments = array();
+		foreach ( $_attachments as $key => $val ) {
+			$attachments[$val->ID] = $_attachments[$key];
+		}
+	} elseif ( !empty($exclude) ) {
+		$attachments = get_children( array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+	} else {
+		$attachments = get_children( array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+	}
+	
 	if ( empty($attachments) )
 		return '';
 
@@ -50,13 +61,9 @@ function my_gallery_shortcode($attr) {
 		return $output;
 	}
 
-/* 	$itemtag = tag_escape($itemtag); */
-/* 	$captiontag = tag_escape($captiontag); */
-	$captiontag;
-
 	$selector = "gallery-{$instance}";
 
-	$gallery_div = '<div id="$selector" class="js-slick-container gallery galleryid-'.$id.'">';
+	$gallery_div = '<div id="'.$selector.'" class="js-slick-container gallery galleryid-'.$id.'">';
 	$output = $gallery_div;
 
 	$i = 0;
@@ -65,20 +72,15 @@ function my_gallery_shortcode($attr) {
 		$tag = '';
 
 		$img = wp_get_attachment_image_src($id, $size);
-/*
-		$largeimg = wp_get_attachment_image_src($id, 'single');
-		$large = $largeimg[0];
-*/
 
-/* if ( $captiontag && trim($attachment->post_excerpt) ) { */
-if ( trim($attachment->post_excerpt) ) {
+		if ( trim($attachment->post_excerpt) ) {
 			$caption = '<span class="wp-caption-text gallery-caption">'.wptexturize($attachment->post_excerpt).'</span>';
 		} else {
 			$caption = null;
 		}
 
 		$output .= '<div class="js-slick-item"><img src="'.$img[0].'" />'.$caption.'</div>';
-		}
+	}
 
 	$output .= "</div>\n";
 
