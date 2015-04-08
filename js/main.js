@@ -3,12 +3,12 @@
 
 function l(data) {
   'use strict';
-  console.log(l);
+  console.log(data);
 }
 
 jQuery(document).ready(function () {
   'use strict';
-  console.log('Hola Globie');
+  l('Hola Globie');
 
 // RESIZE
   function debounce(func, wait, immediate) {
@@ -65,15 +65,20 @@ jQuery(document).ready(function () {
   }
 
   function slickInit() {
-    $('.js-slick-container').slick({
+    $('.js-slick-container').on({
+      init: function(event, slick){
+        var currentSlideIndex = $('.slick-active').attr('data-slick-index');
+        replaceCaption(currentSlideIndex);
+        resizeImages();
+        $(this).css( 'opacity' , 1 );
+      }, 
+      afterChange: function(event, slick, currentSlide, nextSlide){
+        replaceCaption(currentSlide);
+      }
+    })
+    .slick({
       prevArrow: '<a class="slick-prev" data-arrow="prev">Prev</a>',
       nextArrow: '<a class="slick-next" data-arrow="next">Next</a>',
-    })
-    .on('afterChange', function(event, slick, currentSlide, nextSlide){
-      replaceCaption(currentSlide);
-    })
-    .css({
-      'opacity': 1
     });
 
     $('[data-arrow="prev"]').appendTo('.slider-text span.arrow-prev');
@@ -85,7 +90,6 @@ jQuery(document).ready(function () {
   }
 
   if ( $('.js-slick-item').length ) {
-    resizeImages();
     slickInit();
   }
 
