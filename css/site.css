@@ -920,6 +920,9 @@ img {
   border-bottom: 1px dotted #0e0e0e;
   outline: none;
 }
+.slick-slide img {
+  margin: 0 auto;
+}
 @media screen and (max-width: 1272px) {
   .container {
     margin: 0 auto;
