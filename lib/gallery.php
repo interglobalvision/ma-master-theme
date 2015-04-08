@@ -61,28 +61,19 @@ function my_gallery_shortcode($attr) {
 		return $output;
 	}
 
-	$selector = "gallery-{$instance}";
-
-	$gallery_div = '<div id="'.$selector.'" class="js-slick-container gallery galleryid-'.$id.'">';
-	$output = $gallery_div;
-
 	$i = 0;
 	foreach ( $attachments as $id => $attachment ) {
-
-		$tag = '';
 
 		$img = wp_get_attachment_image_src($id, $size);
 
 		if ( trim($attachment->post_excerpt) ) {
-			$caption = '<span class="wp-caption-text gallery-caption">'.wptexturize($attachment->post_excerpt).'</span>';
+			$caption = ' data-caption="'.wptexturize($attachment->post_excerpt).'"';
 		} else {
 			$caption = null;
 		}
 
-		$output .= '<div class="js-slick-item"><img src="'.$img[0].'" />'.$caption.'</div>';
+		$output .= '<div class="js-slick-item slider-item"'.$caption.'><img class="slider-img" src="'.$img[0].'" /></div>';
 	}
-
-	$output .= "</div>\n";
 
 	return $output;
 }
