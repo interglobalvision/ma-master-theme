@@ -18,7 +18,6 @@ if( have_posts() ) {
         <?php the_title(); ?>
         <span class="caption"></span>
         <span class="arrow-prev"></span> | <span class="arrow-next"><span>
-        </div>
       </div>
 
 	    <?php the_content(); ?>
