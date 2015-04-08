@@ -32,6 +32,8 @@ function my_gallery_shortcode($attr) {
 		'size'       => 'gallery',
 	), $attr));
 
+	$size = 'gallery-basic';
+
 	$id = intval($id);
 	if ( 'RAND' == $order )
 		$orderby = 'none';
@@ -48,8 +50,9 @@ function my_gallery_shortcode($attr) {
 		return $output;
 	}
 
-	$itemtag = tag_escape($itemtag);
-	$captiontag = tag_escape($captiontag);
+/* 	$itemtag = tag_escape($itemtag); */
+/* 	$captiontag = tag_escape($captiontag); */
+	$captiontag;
 
 	$selector = "gallery-{$instance}";
 
@@ -67,7 +70,8 @@ function my_gallery_shortcode($attr) {
 		$large = $largeimg[0];
 */
 
-if ( $captiontag && trim($attachment->post_excerpt) ) {
+/* if ( $captiontag && trim($attachment->post_excerpt) ) { */
+if ( trim($attachment->post_excerpt) ) {
 			$caption = '<span class="wp-caption-text gallery-caption">'.wptexturize($attachment->post_excerpt).'</span>';
 		} else {
 			$caption = null;
