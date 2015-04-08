@@ -46,7 +46,7 @@ jQuery(document).ready(function () {
     var windowHeight = $(window).outerHeight();
     var captionHeight = $('.slider-text').outerHeight();
 
-    $('.js-slick-item img').css( 'height' , ( windowHeight - captionHeight - margin ) );
+    $('.js-slick-item img').css( 'max-height' , ( windowHeight - captionHeight - margin ) );
 
     $('.js-slick-container').css( 'padding-top' , margin );
   }
