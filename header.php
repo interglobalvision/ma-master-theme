@@ -63,6 +63,15 @@ if (is_search() || is_tag() || is_page('Search')) {
       </form>
     </div>
 <?php
+  } else if (is_page('Search')) {
+?>
+    <div class="col col12 u-align-center">
+      <form role="search" method="get" id="search-form" action="<?php echo home_url( '/' ); ?>">
+        <label id="search-label">Search for: </label>
+        <input type="search" id="search-input" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" />
+      </form>
+    </div>
+<?php
   }
 ?>
     <div class="col col12 u-align-center">
