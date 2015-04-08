@@ -48,7 +48,7 @@
   </div>
 </header>
 <?php
-if (is_search() || is_tag()) {
+if (is_search() || is_tag() || is_page('Search')) {
 ?>
 <section id="search" class="container">
   <div class="row">
