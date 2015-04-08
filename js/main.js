@@ -12,12 +12,16 @@ jQuery(document).ready(function () {
 
 // PACKERY
 	if ( $('.js-packery-container').length ) {
-	  $('.js-packery-container').packery({
-	  	itemSelector: '.js-packery-item',
-	  	columnWidth: '.grid-sizer',
-	  	gutter: '.gutter-sizer',
-	  	transitionDuration: '0s',
-	  });
+  	$('.js-packery-container').imagesLoaded( function() {
+  	  $('.js-packery-container').packery({
+  	  	itemSelector: '.js-packery-item',
+  	  	columnWidth: 1,
+  	  	gutter: 0,
+  	  	transitionDuration: '0s',
+  	  }).css({
+    	  'opacity': 1
+  	  });
+    });
 	}
 
 // SLICK

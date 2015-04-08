@@ -41,7 +41,7 @@
     <div class="col col6 u-align-right">
       <ul id="menu">
         <li><a href="<?php echo home_url('list-of-works/'); ?>">list of works</a></li>
-        <li><a href="<?php echo home_url('projects/'); ?>">index</a></li>
+        <li><a href="<?php echo home_url('project/'); ?>">index</a></li>
         <li><a href="<?php echo home_url('search/'); ?>">search</a></li>
       </ul>
     </div>

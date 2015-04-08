@@ -15,11 +15,12 @@ if( have_posts() ) {
     the_post();
 ?>
 
-    <article <?php post_class('col col12 js-packery-item'); ?> id="post-<?php the_ID(); ?>">
+    <article <?php post_class('col col4 js-packery-item'); ?> id="post-<?php the_ID(); ?>">
 
-      <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
-
-      <?php the_content(); ?>
+<!--       <a href="<?php the_permalink() ?>"><?php the_title(); ?></a> -->
+      <a href="<?php the_permalink() ?>">
+        <?php the_post_thumbnail(); ?>
+      </a>
 
     </article>
 

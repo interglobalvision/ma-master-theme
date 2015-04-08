@@ -865,6 +865,11 @@ img {
   max-width: 100%;
   height: auto;
 }
+.js-packery-container {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+          transition: opacity 0.3s;
+}
 #header {
   margin-top: 32px;
   margin-bottom: 32px;
