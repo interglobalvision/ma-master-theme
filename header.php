@@ -63,7 +63,7 @@ if (is_search() || is_tag() || is_page('Search')) {
       </form>
     </div>
 <?php
-  } else if (is_page('Search')) {
+  } else if (is_page('Search') || is_tag()) {
 ?>
     <div class="col col12 u-align-center">
       <form role="search" method="get" id="search-form" action="<?php echo home_url( '/' ); ?>">

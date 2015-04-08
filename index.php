@@ -4,7 +4,7 @@ get_header();
 
 <!-- main content -->
 
-<main id="main-content" class="container">
+<main id="main-content">
 
   <!-- main posts loop -->
   <section id="posts" class="row">
@@ -15,12 +15,10 @@ if( have_posts() ) {
     the_post();
 ?>
 
-    <article <?php post_class('col col12'); ?> id="post-<?php the_ID(); ?>">
-
-      <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
-
-      <?php the_content(); ?>
-
+    <article <?php post_class('percent-col into-3'); ?> id="post-<?php the_ID(); ?>">
+      <a href="<?php the_permalink() ?>">
+        <?php the_post_thumbnail(); ?>
+      </a>
     </article>
 
 <?php
