@@ -6,13 +6,12 @@ get_header();
 if( have_posts() ) {
   while( have_posts() ) {
     the_post();
-    //$get_gallery = get_post_meta( $post->ID, '_igv_gallery', true );
-    //$gallery = do_shortcode( $get_gallery );
+    $gallery = get_post_meta( $post->ID, '_igv_gallery', true );
 ?>
 
     <article <?php post_class('viewer'); ?> id="post-<?php the_ID(); ?>">
 
-      <?php // gallery ?>
+      <?php echo do_shortcode($gallery) ?>
 
 	    <?php the_content(); ?>
 
