@@ -27,7 +27,6 @@ jQuery(document).ready(function () {
 // SLICK
   function slickInit() {
     $('.js-slick-container').slick({
-      adaptiveHeight: true,
     }).css({
       'opacity': 1
     });
