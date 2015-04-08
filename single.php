@@ -19,13 +19,7 @@ if( have_posts() ) {
 
       <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
 
-      <div class="js-slick-container">
-
-	  	<?php // echo .js-slick-item ?> 
-
-	  </div>
-
-	  <?php the_content(); ?>
+	    <?php the_content(); ?>
 
     </article>
 
