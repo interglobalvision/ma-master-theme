@@ -1,6 +1,6 @@
 <?php
 
-/* Get post objects for select field options */ 
+/* Get post objects for select field options */
 function get_post_objects( $query_args ) {
 $args = wp_parse_args( $query_args, array(
     'post_type' => 'post',
@@ -55,13 +55,25 @@ function igv_cmb_metaboxes() {
 		'desc'    => __( 'Slider gallery', 'cmb2' ),
 		'id'      => $prefix . 'gallery',
 		'type'    => 'wysiwyg',
-		'options' => array( 
-			'textarea_rows' => 5, 
-			'media_buttons' => true, 
-			'tinymce' => true, 
+		'options' => array(
+			'textarea_rows' => 5,
+			'media_buttons' => true,
+			'tinymce' => true,
       'quicktags' => false,
 			),
 	) );
 
+/*
+  $gallery->add_field( array(
+    'name' => 'Gallery',
+    'desc' => 'Upload and manage gallery',
+    'button' => 'Manage gallery',
+    'id'   => $prefix . 'gallery_images',
+    'type' => 'pw_gallery',
+    'sanitization_cb' => 'pw_gallery_field_sanitise',
+  ) );
+*/
+
 }
+
 ?>

@@ -99,6 +99,8 @@ if (is_search() || is_tag() || is_page('Search')) {
     </div>
   </div>
 </section>
+
+
 <?php
 }
 } //end if
