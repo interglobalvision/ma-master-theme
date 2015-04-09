@@ -129,6 +129,31 @@ img
   outline: none
 
 
+// INDEX/ARCHIVE
+
+.grid-hover
+  img
+    transition: opacity $basic-animation-speed
+  &:hover
+    img
+      opacity: 0.3
+    .grid-hover-holder
+      opacity: 1
+
+.grid-hover-holder
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  z-index: 99
+  box-sizing: border-box
+  padding: $margin-small
+  text-align: center
+  opacity: 0
+  transition: opacity $basic-animation-speed
+
+
 // SINGLE
 
 .viewer
@@ -149,6 +174,7 @@ img
 #single-prev
   top: 48%
   left: $margin-small
+
 
 // SLIDER
 
@@ -174,8 +200,62 @@ img
 
 @media screen and (max-width: ($col * $cols)+($gutter * $cols))
 
-  $col = 80px
+  $col = 78px
   $gutter = 14px
+  .container
+    margin: 0 auto
+    width: ($col * $cols)+($gutter * $cols)
+  .row
+    clear: both
+  .col
+    float: left
+    margin-left: ($gutter/2)
+    margin-right: ($gutter/2)
+    box-sizing: content-box
+  for col in 1..$cols
+    .col{col}
+      width: ( col * $col ) + ( ( col - 1 ) * $gutter )
+
+@media screen and (max-width: 1104px)
+
+  $col = 64px
+  $gutter = 12px
+  .container
+    margin: 0 auto
+    width: ($col * $cols)+($gutter * $cols)
+  .row
+    clear: both
+  .col
+    float: left
+    margin-left: ($gutter/2)
+    margin-right: ($gutter/2)
+    box-sizing: content-box
+  for col in 1..$cols
+    .col{col}
+      width: ( col * $col ) + ( ( col - 1 ) * $gutter )
+
+@media screen and (max-width: 912px)
+
+  $col = 47px
+  $gutter = 12px
+  .container
+    margin: 0 auto
+    width: ($col * $cols)+($gutter * $cols)
+  .row
+    clear: both
+  .col
+    float: left
+    margin-left: ($gutter/2)
+    margin-right: ($gutter/2)
+    box-sizing: content-box
+  for col in 1..$cols
+    .col{col}
+      width: ( col * $col ) + ( ( col - 1 ) * $gutter )
+
+@media screen and (max-width: 708px)
+
+  $col = 19px
+  $gutter = 10px
   .container
     margin: 0 auto
     width: ($col * $cols)+($gutter * $cols)
