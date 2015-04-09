@@ -116,6 +116,7 @@ img
     display: inline-block
     margin-left: 0.5em
 
+
 // SEARCH
 
 #tags
@@ -127,7 +128,32 @@ img
   border-bottom: 1px dotted $color-black-soft
   outline: none
 
+
+// SINGLE
+
+.viewer
+  position: relative
+
+.single-nav
+  position: absolute
+  z-index: 99999
+
+#single-close
+  top: $margin-small
+  right: $margin-small
+
+#single-next
+  top: 48%
+  right: $margin-small
+
+#single-prev
+  top: 48%
+  left: $margin-small
+
 // SLIDER
+
+.slick-list, .slick-track
+  height: 100%
 
 .slider-img
   margin: 0 auto
@@ -139,7 +165,7 @@ img
   display: block
   width: 60%
   margin-left: 20%
-  span a 
+  span a
     cursor: pointer
 
 
