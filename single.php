@@ -11,24 +11,32 @@ if( have_posts() ) {
 
     <article <?php post_class('viewer'); ?> id="post-<?php the_ID(); ?>">
 
-      <nav id="single-close" class="single-nav">
-        <a href="<?php echo home_url(); ?>">&#10005;</a>
-      </nav>
-      <nav id="single-next" class="single-nav">
-        <a href="<?php echo home_url(); ?>">&rarr;</a>
-      </nav>
-      <nav id="single-prev" class="single-nav">
-        <a href="<?php echo home_url(); ?>">&larr;</a>
-      </nav>
+      <div id="single-slider">
 
-      <div class="js-slick-container slider">
-        <?php echo do_shortcode($gallery) ?>
+        <nav id="single-close" class="single-nav">
+          <a href="<?php echo home_url(); ?>">&#10005;</a>
+        </nav>
+        <nav id="single-next" class="single-nav">
+          <a href="<?php echo home_url(); ?>">&rarr;</a>
+        </nav>
+        <nav id="single-prev" class="single-nav">
+          <a href="<?php echo home_url(); ?>">&larr;</a>
+        </nav>
+
+        <div class="js-slick-container u-pointer">
+          <?php echo do_shortcode($gallery) ?>
+        </div>
+
       </div>
-      <div class="slider-text">
+
+      <div id="single-slider-text">
         <?php the_title(); ?>
-        <span class="caption font-italic"></span>
+         |
+        <span id="slick-caption" class="font-italic"></span>
+         |
         <span id="slick-current-index">1</span> of <span id="slick-length"></span>
-        <span class="arrow-prev"></span> | <span class="arrow-next"></span>
+         |
+        <span id="slick-prev" class="u-pointer">Prev</span>/<span id="slick-next" class="u-pointer">Next</span>
       </div>
 
       <section id="single-copy" class="container">

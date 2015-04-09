@@ -1,6 +1,3 @@
-  <footer id="footer">
-  </footer>
-
   <?php get_template_part('partials/scripts'); ?>
 
   <script type="application/ld+json">

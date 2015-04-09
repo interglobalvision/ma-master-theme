@@ -74,7 +74,7 @@ function my_gallery_shortcode($attr) {
 			$caption = null;
 		}
 
-		$output .= '<div class="js-slick-item slider-item"'.$caption.'><div class="u-holder"><div class="u-held"><img class="slider-img" data-basic="'.$img[0].'" data-large="'.$imgLarge[0].'" data-largest="'.$imgLargest[0].'" /></div></div></div>';
+		$output .= '<div class="js-slick-item slider-item u-pointer"'.$caption.'><div class="u-holder"><div class="u-held"><img class="slider-img" data-basic="'.$img[0].'" data-large="'.$imgLarge[0].'" data-largest="'.$imgLargest[0].'" /></div></div></div>';
 	}
 
 	return $output;

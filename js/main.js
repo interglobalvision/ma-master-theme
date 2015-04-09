@@ -10,7 +10,13 @@ function l(data) {
 
 var retina = Modernizr.highresdisplay,
   largeImageThreshold = 800,
-  largestImageThreshold = 1400;
+  largestImageThreshold = 1400,
+
+  margin = 35,
+
+  windowHeight = $(window).outerHeight(),
+
+  captionHeight = $('#single-slider-text').outerHeight();
 
 // FUNCTIONS
 
@@ -38,6 +44,23 @@ function lazyLoadImages(selector) {
   });
 }
 
+  // LAYOUT
+
+$(window).resize(function() {
+  windowHeight = $(window).outerHeight()
+});
+
+function singleLayout() {
+  $('#single-slider').css({
+    'padding-top': margin,
+    'height': (windowHeight - captionHeight)
+  });
+}
+
+if ($('body').hasClass('single')) {
+  singleLayout();
+}
+
   // RESIZE
 
 function debounce(func, wait, immediate) {
@@ -57,62 +80,60 @@ function debounce(func, wait, immediate) {
 
   // SLICK
 
-function resizeImages() {
-  var margin = 35;
-  var windowHeight = $(window).outerHeight();
-  var captionHeight = $('.slider-text').outerHeight();
+var Slick = {
+  init: function() {
+    var _this = this;
+    $('.js-slick-container').on({
+      init: function(event, slick){
+        var currentSlideIndex = $('.slick-active').attr('data-slick-index');
+        // set caption
+        _this.replaceCaption(currentSlideIndex);
 
-  $('.js-slick-item img').css( 'max-height' , ( windowHeight - captionHeight - margin ) );
+        // set length for n of * in captions
+        $('#slick-length').html($('.js-slick-item').length-2);
 
-  $('.js-slick-container').css({
-    'padding-top': margin,
-    'height': (windowHeight - captionHeight)
-  });
-}
+        // lazy load images for screen resolution
+        lazyLoadImages('.slider-img');
 
-function replaceCaption(currentSlide) {
-  var caption = $('[data-slick-index="' + currentSlide + '"]').attr('data-caption');
-  if (! caption || caption === undefined || caption === null) {
-    $('.slider-text .caption').html(' ');
-  } else {
-    $('.slider-text .caption').html(caption);
+        // fix images for window height
+        _this.resizeImages();
+
+        // fade in when ready
+        $('#single-slider').css( 'opacity' , 1 );
+        $('#single-slider-text').css( 'opacity' , 1 );
+      },
+      afterChange: function(event, slick, currentSlide, nextSlide){
+        // set caption
+        _this.replaceCaption(currentSlide);
+
+        // set active index in human readable form
+        $('#slick-current-index').html(currentSlide+1);
+      }
+    })
+    .slick({
+      prevArrow: '#slick-prev',
+      nextArrow: '#slick-next',
+    });
+
+    $('.js-slick-item').on('click', function() {
+      $('.js-slick-container').slick('slickNext');
+    });
+  },
+
+  replaceCaption: function(currentSlide) {
+    var caption = $('[data-slick-index="' + currentSlide + '"]').data('caption');
+    if (! caption || caption === undefined || caption === null) {
+      $('#slick-caption').html(' ');
+    } else {
+      $('#slick-caption').html(caption);
+    }
+  },
+
+  resizeImages: function() {
+    $('.js-slick-item img').css( 'max-height' , ( windowHeight - captionHeight - margin ) );
   }
 }
 
-function slickInit() {
-  $('.js-slick-container').on({
-    init: function(event, slick){
-      var currentSlideIndex = $('.slick-active').attr('data-slick-index');
-      replaceCaption(currentSlideIndex);
-
-      // set length for n of * in captions
-      $('#slick-length').html($('.js-slick-item').length-2);
-
-      lazyLoadImages('.slider-img');
-
-      resizeImages();
-
-      $(this).css( 'opacity' , 1 );
-    },
-    afterChange: function(event, slick, currentSlide, nextSlide){
-      replaceCaption(currentSlide);
-
-      // set active index in human readable form
-      $('#slick-current-index').html(currentSlide+1);
-    }
-  })
-  .slick({
-    prevArrow: '<a class="slick-prev" data-arrow="prev">Prev</a>',
-    nextArrow: '<a class="slick-next" data-arrow="next">Next</a>',
-  });
-
-  $('[data-arrow="prev"]').appendTo('.slider-text span.arrow-prev');
-  $('[data-arrow="next"]').appendTo('.slider-text span.arrow-next');
-
-  $('.js-slick-item').on('click', function() {
-    $('.js-slick-container').slick('slickNext');
-  });
-}
 
 jQuery(document).ready(function () {
   'use strict';
@@ -133,16 +154,18 @@ jQuery(document).ready(function () {
   }
 
 // SLICK
+/*
   var resizeFunction = debounce(function() {
     resizeImages();
   }, 30);
+*/
 
   if ( $('.js-slick-item').length ) {
-    slickInit();
+    Slick.init();
   }
 
   $(window).on('resize', function() {
-    resizeImages();
+    Slick.resizeImages();
   });
 
 });
