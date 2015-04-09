@@ -50,7 +50,7 @@ function my_gallery_shortcode($attr) {
 	} else {
 		$attachments = get_children( array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
 	}
-	
+
 	if ( empty($attachments) )
 		return '';
 
@@ -64,7 +64,9 @@ function my_gallery_shortcode($attr) {
 	$i = 0;
 	foreach ( $attachments as $id => $attachment ) {
 
-		$img = wp_get_attachment_image_src($id, $size);
+		$img = wp_get_attachment_image_src($id, 'gallery-basic');
+		$imgLarge = wp_get_attachment_image_src($id, 'gallery-large');
+		$imgLargest = wp_get_attachment_image_src($id, 'gallery-largest');
 
 		if ( trim($attachment->post_excerpt) ) {
 			$caption = ' data-caption="'.wptexturize($attachment->post_excerpt).'"';
@@ -72,7 +74,7 @@ function my_gallery_shortcode($attr) {
 			$caption = null;
 		}
 
-		$output .= '<div class="js-slick-item slider-item"'.$caption.'><img class="slider-img" src="'.$img[0].'" /></div>';
+		$output .= '<div class="js-slick-item slider-item"'.$caption.'><div class="u-holder"><div class="u-held"><img class="slider-img" data-basic="'.$img[0].'" data-large="'.$imgLarge[0].'" data-largest="'.$imgLargest[0].'" /></div></div></div>';
 	}
 
 	return $output;
