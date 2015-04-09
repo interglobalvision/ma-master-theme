@@ -960,16 +960,19 @@ img {
   position: absolute;
   z-index: 99999;
 }
+.single-nav svg {
+  width: 15px;
+}
 #single-close {
   top: 16px;
   right: 16px;
 }
 #single-next {
-  top: 50%;
+  top: 49%;
   right: 16px;
 }
 #single-prev {
-  top: 50%;
+  top: 49%;
   left: 16px;
 }
 #single-slider {
