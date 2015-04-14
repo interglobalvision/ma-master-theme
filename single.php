@@ -19,12 +19,29 @@ if( have_posts() ) {
           </a>
         </nav>
         <nav id="single-next" class="single-nav">
-          <a href="<?php echo home_url(); ?>">
+<?php
+  $nextPost = get_adjacent_post(null, null, false);
+  if ($nextPost) {
+    $nextLink = get_permalink($nextPost->ID);
+  } else {
+    $nextLink = home_url();
+  }
+?>
+          <a href="<?php echo $nextLink; ?>">
             <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/next.svg'); ?>
           </a>
         </nav>
         <nav id="single-prev" class="single-nav">
-          <a href="<?php echo home_url(); ?>">
+<?php
+  $previousPost = get_adjacent_post();
+  if ($previousPost) {
+    $prevLink = get_permalink($previousPost->ID);
+  } else {
+    $prevLink = home_url();
+  }
+/*   var_dump($previousPost); */
+?>
+          <a href="<?php echo $prevLink; ?>">
             <?php echo file_get_contents(get_bloginfo('stylesheet_directory') . '/img/prev.svg'); ?>
           </a>
         </nav>
