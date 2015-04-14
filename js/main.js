@@ -47,7 +47,7 @@ function lazyLoadImages(selector) {
   // LAYOUT
 
 $(window).resize(function() {
-  windowHeight = $(window).outerHeight()
+  windowHeight = $(window).outerHeight();
 });
 
 function singleLayout() {
@@ -69,12 +69,16 @@ function debounce(func, wait, immediate) {
     var context = this, args = arguments;
     var later = function() {
       timeout = null;
-      if (!immediate) func.apply(context, args);
+      if (!immediate) {
+        func.apply(context, args);
+      }
     };
     var callNow = immediate && !timeout;
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);
-    if (callNow) func.apply(context, args);
+    if (callNow) {
+      func.apply(context, args);
+    }
   };
 }
 
@@ -132,7 +136,7 @@ var Slick = {
   resizeImages: function() {
     $('.js-slick-item img').css( 'max-height' , ( windowHeight - captionHeight - margin ) );
   }
-}
+};
 
 
 jQuery(document).ready(function () {
@@ -144,9 +148,8 @@ jQuery(document).ready(function () {
     $('.js-packery-container').imagesLoaded( function() {
       $('.js-packery-container').packery({
         itemSelector: '.js-packery-item',
-        columnWidth: 1,
-        gutter: 0,
         transitionDuration: '0s',
+        percentPosition: true
       }).css({
         'opacity': 1
       });
