@@ -140,4 +140,34 @@ function tag_archive_filter($query) {
 }
 add_action('pre_get_posts','tag_archive_filter');
 
+
+// THEME INIT STUFF
+
+function master_theme_setup() {
+
+  $list_page = array(
+    'post_title'    => 'List of posts',
+    'post_status'   => 'publish',
+    'post_type'   => 'page',
+    'page_template'   => 'page-list.php'
+  );
+  wp_insert_post( $list_page );
+
+  $search_page = array(
+    'post_title'    => 'Search',
+    'post_status'   => 'publish',
+    'post_type'   => 'page'
+  );
+  wp_insert_post( $search_page );
+
+  $about_page = array(
+    'post_title'    => 'About',
+    'post_status'   => 'publish',
+    'post_type'   => 'page'
+  );
+  wp_insert_post( $about_page );
+
+}
+add_action( 'after_switch_theme', 'master_theme_setup' );
+
 ?>
