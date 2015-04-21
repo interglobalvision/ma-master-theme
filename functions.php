@@ -145,8 +145,9 @@ add_action('pre_get_posts','tag_archive_filter');
 
 function master_theme_setup() {
 
+  // add pages needed
   $list_page = array(
-    'post_title'    => 'List of posts',
+    'post_title'    => 'List of works',
     'post_status'   => 'publish',
     'post_type'   => 'page',
     'page_template'   => 'page-list.php'
@@ -166,6 +167,15 @@ function master_theme_setup() {
     'post_type'   => 'page'
   );
   wp_insert_post( $about_page );
+
+  // set settings
+  update_option( 'default_comment_status', 'closed' );
+  update_option( 'default_ping_status', 'closed' );
+
+  update_option( 'blogdescription', ' ' );
+
+  update_option( 'permalink_structure', '/%postname%/' );
+  flush_rewrite_rules();
 
 }
 add_action( 'after_switch_theme', 'master_theme_setup' );
